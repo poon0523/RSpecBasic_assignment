@@ -249,7 +249,7 @@ status = [0,1,2]
     Task.create!(
       title: "task_title_#{n + 1}",
       content: "task_content_#{n + 1}",
-      deadline_on: base_time0.advance(days: 1),
+      deadline_on: base_time0.advance(days: n),
       priority: priority.sample,
       status: status.sample,
       user_id: 1
@@ -261,7 +261,7 @@ status = [0,1,2]
   Task.create!(
     title: "task_title_#{n + 1}",
     content: "task_content_#{n + 1}",
-    deadline_on: base_time0.advance(days: 1),
+    deadline_on: base_time0.advance(days: n),
     priority: priority.sample,
     status: status.sample,
     user_id: 2
