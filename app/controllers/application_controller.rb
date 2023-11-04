@@ -22,4 +22,6 @@ class ApplicationController < ActionController::Base
             redirect_to tasks_path, notice: t('common.notice_admin_needs')
         end
     end
+
+
 end
