@@ -35,6 +35,8 @@ class User < ApplicationRecord
     # tasksテーブルとのアソシエーション
     has_many :tasks, dependent: :destroy
 
+    # labelsテーブルとのアソシエーション
+    has_many :labels, dependent: :destroy
 
 
 end

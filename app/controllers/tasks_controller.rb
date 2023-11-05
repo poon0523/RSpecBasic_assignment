@@ -27,6 +27,9 @@ class TasksController < ApplicationController
       # 検索パラメータにステータスのみがあった場合
       elsif params[:search][:status].present?
         @tasks = Task.where(user: current_user).search_status(params[:search][:status]).page(params[:page])
+      # 検索パラメータにラベルのみがあった場合
+      elsif params[:search][:label].present?
+        @tasks = Task.where(user: current_user).search_label(params[:search][:label]).page(params[:page])
       # 検索パラメータに値がない場合
       else
         @tasks = Task.where(user: current_user).old_created.page(params[:page])
@@ -53,7 +56,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_url, notice:t('notice.successful_task',action: "登録") }
+        format.html { redirect_to tasks_url, success:t('notice.successful_task',action: "登録") }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,7 +69,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice:t('notice.successful_task',action: "更新") }
+        format.html { redirect_to @task, success:t('notice.successful_task',action: "更新") }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -79,7 +82,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice:t('notice.successful_task',action: "削除") }
+      format.html { redirect_to tasks_url, success:t('notice.successful_task',action: "削除") }
       format.json { head :no_content }
     end
   end
@@ -92,13 +95,13 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :content, :deadline_on, :priority, :status)
+      params.require(:task).permit(:title, :content, :deadline_on, :priority, :status, { label_ids: [] })
     end
 
     def correct_user
       task = Task.find(params[:id])
       @user = task.user_id
-      redirect_to tasks_path, notice: t('notice.correct_user') unless correct_user?(@user)
+      redirect_to tasks_path, warning: t('notice.correct_user') unless correct_user?(@user)
     end
 
  end

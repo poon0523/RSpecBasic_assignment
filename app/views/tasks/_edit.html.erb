@@ -11,33 +11,40 @@
       </div>
     <% end %>
   
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label :title, class:"control-label" %>
+    <%= form.text_field :title, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content, class:"control-label" %>
+    <%= form.text_area :content, class:"form-control",type:"text" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :deadline_on, class:"control-label" %>
+    <%= form.date_field :deadline_on, class:"form-control",type:"date" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :priority, class:"control-label" %>
+    <%= form.select :priority, Task.priorities.keys.to_a, { include_blank: "" }, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :status, class:"control-label" %>
+    <%= form.select :status, Task.statuses.keys.to_a, { include_blank: "" }, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "ラベル", class:"control-label" %>
+    <div>
+      <%= form.collection_check_boxes(:label_ids, Label.where(user: current_user), :id, :name) %>
     </div>
+  </div>
   
-    <div class="field">
-      <%= form.label :content %>
-      <%= form.text_area :content %>
-    </div>
-
-    <div class="field">
-    <%= form.label :deadline_on %>
-    <%= form.date_field :deadline_on %>
-    </div>
-
-    <div class="field">
-      <%= form.label :priority %>
-      <%= form.select :priority, Task.priorities.keys.to_a, { include_blank: "" } %>
-    </div>
-
-    <div class="field">
-      <%= form.label :status %>
-      <%= form.select :status, Task.statuses.keys.to_a, { include_blank: "" } %>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit id:"update-task" %>
-    </div>
+  <div class = "text-right">
+      <%= form.submit id:"update-task",class:"btn btn-primary"  %>
+  </div>
   <% end %>
   

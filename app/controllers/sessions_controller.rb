@@ -14,9 +14,9 @@ class SessionsController < ApplicationController
         if user&.authenticate(params[:session][:password])
         # 一致した場合、sessionメソッドを使い、sessionオブジェクトを作成した上、タスク一覧に遷移
             log_in(user)
-            redirect_to tasks_path, notice: t('.success')
+            redirect_to tasks_path, success: t('.success')
         else
-            flash[:notice] = t('.fail')
+            flash[:danger] = t('.fail')
             redirect_to new_session_path
         end
     end
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     def destroy
         # セッションを削除する
         session.delete(:user_id)
-        flash[:notice] = t('.logout')
+        flash[:success] = t('.logout')
         redirect_to new_session_path
     end
 

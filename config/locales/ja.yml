@@ -19,6 +19,8 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認）
         admin: 管理者権限
+      label:
+        name: ラベル
   # Active Recordモデルのバリデーションエラーメッセージの翻訳を定義
   errors:
     # バリデーションエラーのエラー文の翻訳を定義（バリデーションエラーメッセージの名前はすでに決まっている）
@@ -33,6 +35,7 @@ ja:
     successful_task: タスクを%{action}しました
     successful_user: アカウントを%{action}しました
     successful_admin_user: ユーザを%{action}しました
+    successful_label: ラベルを%{action}しました
     fail_login: メールアドレスまたはパスワードに誤りがあります
     correct_user: アクセス権限がありません
   common:
@@ -46,6 +49,8 @@ ja:
     sign-out: ログアウト
     users-index: ユーザ一覧
     add-user: ユーザを登録する
+    labels-index: ラベル一覧
+    new-label: ラベルを登録する
     destroy: 削除
     back: 戻る
     confirm_destroy: 本当に削除してもよろしいですか？
@@ -92,6 +97,13 @@ ja:
         title: ユーザ詳細ページ
       edit:
         title: ユーザ編集ページ
+  labels:
+    index:
+      title: ラベル一覧ページ
+    new:
+      title: ラベル登録ページ
+    edit:
+      title: ラベル編集ページ
 
     
 
