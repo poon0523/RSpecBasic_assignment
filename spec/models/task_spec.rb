@@ -18,7 +18,7 @@ RSpec.describe 'タスクモデル機能', type: :model do
 
     context 'タスクのタイトルと説明に値が入っている場合' do
       it 'タスクを登録できる' do
-        task = Task.create(title: '企画書作成', content: '企画書を作成する。', deadline_on: '2025-02-18', status: 0, priority: 1)
+        task = FactoryBot.create(:task)        
         expect(task).to be_valid
       end
     end
@@ -63,5 +63,4 @@ RSpec.describe 'タスクモデル機能', type: :model do
       end
     end
   end
-
 end
