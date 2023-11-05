@@ -20,7 +20,7 @@ ja:
         password_confirmation: パスワード（確認）
         admin: 管理者権限
       label:
-        name: ラベル
+        name: 名前
   # Active Recordモデルのバリデーションエラーメッセージの翻訳を定義
   errors:
     # バリデーションエラーのエラー文の翻訳を定義（バリデーションエラーメッセージの名前はすでに決まっている）

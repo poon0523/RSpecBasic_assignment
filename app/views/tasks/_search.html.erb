@@ -13,7 +13,7 @@
       </div>
 
       <div class="form-group col-sm">
-        <%= form.label Label.human_attribute_name(:name) %>
+        <%= form.label "ラベル" %>
         <%= form.select :label, Label.where(user: current_user).pluck(:name, :id), { include_blank: "" }, class:"form-control" %>
       </div>
     </div>
