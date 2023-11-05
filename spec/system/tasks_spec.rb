@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'タスク管理機能', type: :system do
-  # 各画面での操作の前に一般ユーザーでログインしておく
-  
-
   describe '登録機能' do
     context 'タスクを登録した場合' do
       # let!でuserインスタンスを作成することでbefore doの処理の前にインスタンスを作成
@@ -15,7 +12,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       let!(:third_task) { FactoryBot.create(:task, user_id: user.id, title: 'third_task', created_at: '2025-02-16') }
       let(:add_later) { FactoryBot.create(:task, user_id: user.id, title: 'add_task', created_at: '2025-02-19') }
       # デフォルトでbefore doを使った場合、it構文の直前に処理が実行されるようになっており、describe、contextには適用されない
-      # そのためbeforeのフック[:all]を使い、describeもしくはcontext実行の直前にbeforeが実行されるようにする
       before do
         visit new_session_path
         fill_in "メールアドレス", with:user.email
@@ -48,7 +44,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       let!(:third_task) { FactoryBot.create(:task, user_id: user.id, title: 'third_task', created_at: '2025-02-16') }
       let(:add_later) { FactoryBot.create(:task, user_id: user.id, title: 'add_task', created_at: '2025-02-19') }
       # デフォルトでbefore doを使った場合、it構文の直前に処理が実行されるようになっており、describe、contextには適用されない
-      # そのためbeforeのフック[:all]を使い、describeもしくはcontext実行の直前にbeforeが実行されるようにする
       before do
         visit new_session_path
         fill_in "メールアドレス", with:user.email
@@ -69,7 +64,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       let!(:user) { FactoryBot.create(:user) }
       # 各テストで必要なtaskも事前に作成。事前作成が必要でないもののみletで定義
       # デフォルトでbefore doを使った場合、it構文の直前に処理が実行されるようになっており、describe、contextには適用されない
-      # そのためbeforeのフック[:all]を使い、describeもしくはcontext実行の直前にbeforeが実行されるようにする
       before do
         visit new_session_path
         fill_in "メールアドレス", with:user.email
@@ -98,7 +92,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       let!(:user) { FactoryBot.create(:user) }
       # 各テストで必要なtaskも事前に作成。事前作成が必要でないもののみletで定義
       # デフォルトでbefore doを使った場合、it構文の直前に処理が実行されるようになっており、describe、contextには適用されない
-      # そのためbeforeのフック[:all]を使い、describeもしくはcontext実行の直前にbeforeが実行されるようにする
       before do
         visit new_session_path
         fill_in "メールアドレス", with:user.email
@@ -128,7 +121,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       let!(:user) { FactoryBot.create(:user) }
       # 各テストで必要なtaskも事前に作成。事前作成が必要でないもののみletで定義
       # デフォルトでbefore doを使った場合、it構文の直前に処理が実行されるようになっており、describe、contextには適用されない
-      # そのためbeforeのフック[:all]を使い、describeもしくはcontext実行の直前にbeforeが実行されるようにする
       let!(:first_task) { FactoryBot.create(:task, user_id: user.id, title: 'first_task', deadline_on: '2025-02-18') }
       let!(:second_task) { FactoryBot.create(:task, user_id: user.id, title: 'second_task', deadline_on: '2025-02-17') }
       let!(:third_task) { FactoryBot.create(:task, user_id: user.id, title: 'third_task', deadline_on: '2025-02-16') }
@@ -160,7 +152,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       let!(:user) { FactoryBot.create(:user) }
       # 各テストで必要なtaskも事前に作成。事前作成が必要でないもののみletで定義
       # デフォルトでbefore doを使った場合、it構文の直前に処理が実行されるようになっており、describe、contextには適用されない
-      # そのためbeforeのフック[:all]を使い、describeもしくはcontext実行の直前にbeforeが実行されるようにする
       let!(:first_task) { FactoryBot.create(:task, user_id: user.id, title: 'first_task', priority: 1) }
       let!(:second_task) { FactoryBot.create(:task, user_id: user.id, title: 'second_task', priority: 2) }
       let!(:third_task) { FactoryBot.create(:task, user_id: user.id, title: 'third_task', priority: 0) }
@@ -193,7 +184,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       let!(:user) { FactoryBot.create(:user) }
       # 各テストで必要なtaskも事前に作成。事前作成が必要でないもののみletで定義
       # デフォルトでbefore doを使った場合、it構文の直前に処理が実行されるようになっており、describe、contextには適用されない
-      # そのためbeforeのフック[:all]を使い、describeもしくはcontext実行の直前にbeforeが実行されるようにする
       let!(:first_task) { FactoryBot.create(:task, user_id: user.id, title: 'first_task', priority: 1) }
       let!(:second_task) { FactoryBot.create(:task, user_id: user.id, title: 'second_task', priority: 2) }
       let!(:third_task) { FactoryBot.create(:task, user_id: user.id, title: 'third_task', priority: 0) }
@@ -222,7 +212,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       let!(:user) { FactoryBot.create(:user) }
       # 各テストで必要なtaskも事前に作成。事前作成が必要でないもののみletで定義
       # デフォルトでbefore doを使った場合、it構文の直前に処理が実行されるようになっており、describe、contextには適用されない
-      # そのためbeforeのフック[:all]を使い、describeもしくはcontext実行の直前にbeforeが実行されるようにする
       let!(:first_task) { FactoryBot.create(:task, user_id: user.id, title: 'first_task', status: 1) }
       let!(:second_task) { FactoryBot.create(:task, user_id: user.id, title: 'second_task', status: 2) }
       let!(:third_task) { FactoryBot.create(:task, user_id: user.id, title: 'third_task', status: 0) }
@@ -251,7 +240,6 @@ RSpec.describe 'タスク管理機能', type: :system do
       let!(:user) { FactoryBot.create(:user) }
       # 各テストで必要なtaskも事前に作成。事前作成が必要でないもののみletで定義
       # デフォルトでbefore doを使った場合、it構文の直前に処理が実行されるようになっており、describe、contextには適用されない
-      # そのためbeforeのフック[:all]を使い、describeもしくはcontext実行の直前にbeforeが実行されるようにする
       let!(:first_task) { FactoryBot.create(:task, user_id: user.id, title: 'first_task', status: 0) }
       let!(:second_task) { FactoryBot.create(:task, user_id: user.id, title: 'second_task', status: 2) }
       let!(:third_task) { FactoryBot.create(:task, user_id: user.id, title: 'third_task', status: 1) }
