@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             log_in(@user)
-            redirect_to tasks_path, notice:t('notice.successful_user',action: "登録")
+            redirect_to tasks_path, success:t('notice.successful_user',action: "登録")
         else
             render :new
         end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     def update
         if @user.update(user_params)
-            redirect_to user_path, notice:t('notice.successful_user',action: "更新")
+            redirect_to user_path, success:t('notice.successful_user',action: "更新")
         else
             render :edit
         end

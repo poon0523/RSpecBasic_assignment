@@ -259,8 +259,8 @@ status = [0,1,2]
 # 管理者のタスク
 50.times do |n|
   Task.create!(
-    title: "task_title_#{n + 1}",
-    content: "task_content_#{n + 1}",
+    title: "admin_task_title_#{n + 1}",
+    content: "admin_task_content_#{n + 1}",
     deadline_on: base_time0.advance(days: n),
     priority: priority.sample,
     status: status.sample,

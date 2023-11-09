@@ -2,4 +2,6 @@
 
 <%= render 'edit', task: @task %>
 
-<%= link_to t('common.back'), tasks_path,id:"back"%>
+<div class = "text-right">
+    <%= link_to t('common.back'), tasks_path,id:"back", class: "btn btn-link" %>
+</div>

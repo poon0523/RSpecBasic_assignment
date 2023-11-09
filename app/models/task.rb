@@ -12,6 +12,7 @@ class Task < ApplicationRecord
     scope :high_priority, -> {order(priority: :desc,created_at: :desc)}
     scope :search_status, ->(status){ where(status: status) }
     scope :search_title,  ->(title){ where('title LIKE(?)',"%#{title}%") }
+    scope :search_label,  ->(label){ joins(:labels).where(labels: {id: label}) }
     scope :search_title_status, ->(search) do
         search_title(search[:title])
             .search_status(search[:status])
@@ -19,4 +20,8 @@ class Task < ApplicationRecord
 
     # usrsテーブルとのアソシエーション
     belongs_to :user
+
+    has_many :labellings, dependent: :destroy
+    has_many :labels, through: :labellings
+
 end
